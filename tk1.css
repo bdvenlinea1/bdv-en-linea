@@ -1,0 +1,52 @@
+/* Estilo general del body */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+
+
+/* Estilo del contenedor principal */
+.container {
+    width: 80%;
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+}
+
+/* Estilo del tÃ­tulo */
+h1 {
+    color: #f89c23;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 25px;
+}
+
+/* Estilo del pÃ¡rrafo */
+p {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 18px;
+}
+
+/* Estilo de los mÃ©todos de seguridad */
+.security-method {
+    display: inline-block;
+    text-align: center;
+    margin: 0 94px;
+}
+
+.security-method img {
+    width: 100px; /* Ajusta el tamaÃ±o de las imÃ¡genes segÃºn sea necesario */
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.security-method p {
+    font-size: 16px;
+    color: #555;
+}

